@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#fff1ed">
+
+<title>I'm Truly Sorry ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #fff1ed, #fce4ec);
+    font-family: 'Segoe UI', sans-serif;
+    padding: 20px;
+}
+
+.container {
+    max-width: 480px;
+    width: 100%;
+    padding: 40px 28px;
+    text-align: center;
+    background: rgba(255,255,255,0.88);
+    border-radius: 24px;
+    box-shadow: 0 15px 45px rgba(120,60,60,0.10);
+    animation: appear 1.2s ease;
+}
+
+.heart {
+    font-size: 52px;
+    animation: heartbeat 1.5s infinite;
+    margin-bottom: 18px;
+}
+
+h1 {
+    color: #bd6472;
+    font-family: Georgia, serif;
+    font-size: clamp(30px, 8vw, 38px);
+    margin-bottom: 20px;
+}
+
+.message {
+    color: #66585b;
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 23px;
+}
+
+.promise {
+    background: #fff0f1;
+    border-left: 3px solid #d77d8a;
+    padding: 16px;
+    border-radius: 10px;
+    color: #a75c68;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 23px;
+}
+
+/* Sorry Typewriter Section */
+
+.sorry-section {
+    margin: 30px 0;
+    padding: 22px 12px;
+    background: #fff8f7;
+    border: 1px solid #f5dfe0;
+    border-radius: 15px;
+}
+
+.sorry-title {
+    color: #bd6472;
+    font-family: Georgia, serif;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.sorry-text {
+    min-height: 32px;
+    color: #c16d79;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    overflow-wrap: anywhere;
+}
+
+.cursor {
+    display: inline-block;
+    width: 2px;
+    height: 18px;
+    background: #c16d79;
+    margin-left: 3px;
+    vertical-align: middle;
+    animation: blink 0.8s infinite;
+}
+
+.counter {
+    color: #a78a8d;
+    font-size: 11px;
+    margin-top: 13px;
+    letter-spacing: 1px;
+}
+
+.progress-track {
+    width: 100%;
+    height: 4px;
+    background: #f3e1e1;
+    border-radius: 10px;
+    margin-top: 13px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #d77d8a;
+    border-radius: 10px;
+    transition: width 0.2s linear;
+}
+
+.footer {
+    color: #b58b90;
+    font-size: 12px;
+    font-style: italic;
+    line-height: 1.8;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 32px 19px;
+        border-radius: 18px;
+    }
+
+    .message, .promise {
+        font-size: 13px;
+    }
+
+    .sorry-text {
+        font-size: 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="heart">❤️</div>
+
+    <h1>I'm Truly Sorry</h1>
+
+    <p class="message">
+        I know I made a mistake, and I genuinely
+        apologise for it.
+
+        I should have been more thoughtful,
+        more careful and more considerate.
+        I should have listened and thought
+        properly before taking any step.
+
+        I never want my actions to put you
+        in an uncomfortable situation.
+        I understand where I went wrong.
+    </p>
+
+    <div class="promise">
+        I promise that next time I will be more
+        alert, responsible and sincere.
+
+        I will think a thousand times before
+        taking even a single step.
+        I will listen, understand and respect
+        your words instead of acting impulsively.
+    </div>
+
+    <p class="message">
+        I cannot undo what happened,
+        but I can learn from it and make sure
+        my actions reflect what I have learned.
+    </p>
+
+    <!-- 10,000 Apologies -->
+
+    <div class="sorry-section">
+
+        <div class="sorry-title">
+            A Little More From My Heart ❤️
+        </div>
+
+        <div>
+            <span class="sorry-text" id="sorryText"></span>
+            <span class="cursor" id="cursor"></span>
+        </div>
+
+        <div class="counter" id="counter">
+            0 / 10,000 apologies
+        </div>
+
+        <div class="progress-track">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        No excuses. No expectations.<br>
+        Just a sincere apology. ❤️
+    </div>
+
+</div>
+
+<script>
+(() => {
+
+    const TOTAL = 10000;
+
+    // Typing speed and pause between apologies
+    const TYPING_SPEED = 28;
+    const MESSAGE_DELAY = 220;
+
+    const textElement = document.getElementById("sorryText");
+    const counterElement = document.getElementById("counter");
+    const progressBar = document.getElementById("progressBar");
+    const cursor = document.getElementById("cursor");
+
+    const message = "I'm sorry 😔";
+
+    // Unicode-safe character handling
+    const characters = Array.from(message);
+
+    let current = 0;
+    let characterIndex = 0;
+    let timer = null;
+    let paused = document.hidden;
+
+    function updateProgress() {
+        counterElement.textContent =
+            `${current.toLocaleString()} / 10,000 apologies`;
+
+        progressBar.style.width =
+            `${(current / TOTAL) * 100}%`;
+    }
+
+    function typeMessage() {
+
+        if (paused || current >= TOTAL) {
+            return;
+        }
+
+        // Type one character at a time
+        if (characterIndex < characters.length) {
+
+            textElement.textContent += characters[characterIndex];
+
+            characterIndex++;
+
+            timer = setTimeout(typeMessage, TYPING_SPEED);
+
+        } else {
+
+            // One complete apology
+            current++;
+            updateProgress();
+
+            if (current >= TOTAL) {
+                textElement.textContent = "I'm sorry 😔";
+                cursor.style.display = "none";
+                counterElement.textContent =
+                    "10,000 / 10,000 apologies ❤️";
+                return;
+            }
+
+            // Prepare the next apology
+            timer = setTimeout(() => {
+
+                if (paused) return;
+
+                textElement.textContent = "";
+                characterIndex = 0;
+
+                typeMessage();
+
+            }, MESSAGE_DELAY);
+        }
+    }
+
+    // Pause animation when tab is not visible
+    document.addEventListener("visibilitychange", () => {
+
+        paused = document.hidden;
+
+        if (paused) {
+            clearTimeout(timer);
+        } else {
+            typeMessage();
+        }
+
+    });
+
+    // Start automatically
+    if (!paused) {
+        typeMessage();
+    }
+
+})();
+</script>
+
+</body>
+</html>
